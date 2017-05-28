@@ -27,6 +27,8 @@ public interface ComidaFacadeLocal {
     List<Comida> findAll();
 
     List<Comida> findRange(int[] range);
+    
+    List<Comida> findByDescripcion(String asd);
 
     int count();
     

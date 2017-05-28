@@ -1,4 +1,4 @@
-package managedsbeans;
+package controladores;
 
 import entidades.Comida;
 import managedsbeans.util.JsfUtil;

@@ -6,6 +6,7 @@
 package sessionbeans;
 
 import entidades.Comida;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,6 +24,11 @@ public class ComidaFacade extends AbstractFacade<Comida> implements ComidaFacade
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+    public List<Comida> findByDescripcion(String asd)      
+    {
+       return this.em.createNamedQuery("Comida.findByDescripcion", Comida.class).setParameter("descripcion", asd).getResultList();
     }
 
     public ComidaFacade() {

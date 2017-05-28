@@ -3,3 +3,4 @@ sessionbeans\ComidaFacadeLocal.class
 entidades\Comida_.class
 sessionbeans\AbstractFacade.class
 sessionbeans\ComidaFacade.class
+controladores\Controlador_PrimeFaces.class
