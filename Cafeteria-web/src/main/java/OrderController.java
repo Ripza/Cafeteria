@@ -35,6 +35,8 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 import entidades.Comida;
+import java.util.ArrayList;
+import javax.faces.event.ActionEvent;
 
 /**
  *
@@ -65,6 +67,24 @@ public class OrderController implements Serializable {
     
     private Comida comidaseleccionada;
     private List<Comida> comidaSeleccionadas;
+    private List<Comida> comidaSeleccionadaOrden;
+
+    public List<Comida> getComidaSeleccionadaOrden() {
+        return comidaSeleccionadaOrden;
+    }
+
+    public void setComidaSeleccionadaOrden(List<Comida> comidaSeleccionadaOrden) {
+        this.comidaSeleccionadaOrden = comidaSeleccionadaOrden;
+    }
+    static private List<Comida> comidasEnOrden;
+
+    public List<Comida> getComidasEnOrden() {
+        return comidasEnOrden;
+    }
+
+    public void setComidasEnOrden(List<Comida> comidasEnOrden) {
+        this.comidasEnOrden = comidasEnOrden;
+    }
 
     public Comida getComidaseleccionada() {
         return comidaseleccionada;
@@ -79,6 +99,8 @@ public class OrderController implements Serializable {
     }
 
     public void setComidaSeleccionadas(List<Comida> comidaSeleccionadas) {
+        System.out.println("Seleccione comidas");
+        System.out.println(comidaSeleccionadas);
         this.comidaSeleccionadas = comidaSeleccionadas;
     }
 
@@ -103,11 +125,34 @@ public class OrderController implements Serializable {
     }
 
     public void setCalendarioController(CalendarioController calendarioController) {
-        System.out.println("Estono");
         this.calendarioController = calendarioController;
     }
+    public void cargarSeleccion()
+    {
+        System.out.println("Comidas cargadas");
+        if(comidaSeleccionadas != null)
+            comidasEnOrden.addAll(comidaSeleccionadas);
+        System.out.println(comidasEnOrden);
+    }
     
+    public void testButtonActionListener(ActionEvent event) {
+        System.out.println("testButtonActionListener invoked");
+    }
+
+    public String ir_confirmacion()
+    {
+        System.out.println("Confirmando orden");
+        return "ordenConfirmada";
+    }
     
+    public void eliminarComida()
+    {
+        
+        System.out.println("Comidas eliminadas");
+        if(comidasEnOrden != null)
+            comidasEnOrden.removeAll(comidaSeleccionadaOrden);
+        System.out.println(comidaSeleccionadaOrden);
+    }
 
     private String otroPene;
 
@@ -133,6 +178,15 @@ public class OrderController implements Serializable {
     @PostConstruct
     public void init() {
        this.comidas = comidaController.getItems();
+       if(comidasEnOrden == null){
+        comidasEnOrden = new ArrayList();
+       }
+       
+       if(comidaSeleccionadaOrden == null){
+        comidaSeleccionadaOrden = new ArrayList();
+       }
+       
+       
     }
     
     /**

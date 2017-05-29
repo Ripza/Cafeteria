@@ -13,7 +13,28 @@
         <p>Welcome #{orderctrl.calendarioController.date4}</p>
         
         
+        <h:form id="form">
         <p:dataTable id="checkboxDT" var="comida" value="#{orderctrl.comidas}" selection="#{orderctrl.comidaSeleccionadas}" rowKey="#{comida.idComida}" style="margin-bottom:0">
+        <f:facet name="header">
+            Checkbox
+        </f:facet>
+        <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+        <p:column headerText="Id">
+            <h:outputText value="#{comida.idComida}" />
+        </p:column>
+        <p:column headerText="Nombre">
+            <h:outputText value="#{comida.nombre}" />
+        </p:column>
+        <p:column headerText="Precio">
+            <h:outputText value="#{comida.precio}" />
+        </p:column>
+        <f:facet name="footer">
+            <p:commandButton process="checkboxDT" id="cargarComidas" value="Seleccionar Comidas" update=":form:checkboxDT2" action="#{orderctrl.cargarSeleccion}"/>
+        </f:facet>
+        </p:dataTable>
+       
+            
+        <p:dataTable id="checkboxDT2" var="comida" value="#{orderctrl.comidasEnOrden}" selection="#{orderctrl.comidaSeleccionadaOrden}" rowKey="#{comida.idComida}" style="margin-bottom:0">
         <f:facet name="header">
             Checkbox
         </f:facet>
@@ -29,7 +50,12 @@
         </p:column>
         
         </p:dataTable>
-       
+        
+        <f:facet name="footer">
+           <p:commandButton process="checkboxDT2" id="eliminarComidas" value="Eliminar Comida" update=":form:checkboxDT2" action="#{orderctrl.eliminarComida}"/>
+        </f:facet>
+        <h:commandButton value="Confirmar Orden" action="#{orderctrl.ir_confirmacion()}" />
+        </h:form>
     </h:body>
 </html>
 
