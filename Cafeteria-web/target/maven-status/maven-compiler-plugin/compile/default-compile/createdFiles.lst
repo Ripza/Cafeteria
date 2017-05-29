@@ -1,11 +1,14 @@
 controladores\ComidaController$ComidaControllerConverter.class
 managedsbeans\util\JsfUtil$PersistAction.class
 CalendarioController.class
+propiedadesOrdenController.class
 Message.class
 controladores\ComidaController.class
 controladores\util\JsfUtil.class
 managedsbeans\util\JsfUtil.class
 asd.class
+ComidaConfirmadaController.class
 OrderController.class
 HelloWorld.class
+OrdenComidaController.class
 controladores\util\JsfUtil$PersistAction.class

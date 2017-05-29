@@ -42,6 +42,10 @@ public class ComidaConfirmadaController {
         this.orderController = orderController;
     }
     
+    public String irCreacionOrden()
+    {
+        return "propiedadesOrden";
+    }
     @PostConstruct
     public void init() {
        this.comidaSeleccionada = orderController.getComidasEnOrden();

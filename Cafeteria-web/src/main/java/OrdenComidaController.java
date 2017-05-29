@@ -36,6 +36,11 @@ public class OrdenComidaController {
         return comidaSeleccionada;
     }
 
+    public String irCreacionOrden()
+    {
+        System.out.println("Confirmando orden segunda");
+        return "propiedadesOrden";
+    }
     public void setComidaSeleccionada(List<Comida> comidaSeleccionada) {
         this.comidaSeleccionada = comidaSeleccionada;
     }
