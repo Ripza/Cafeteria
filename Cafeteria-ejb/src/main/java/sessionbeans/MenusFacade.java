@@ -5,7 +5,7 @@
  */
 package sessionbeans;
 
-import entidades.Comida;
+import entidades.Menus;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author Lene
  */
 @Stateless
-public class ComidaFacade extends AbstractFacade<Comida> implements ComidaFacadeLocal {
+public class MenusFacade extends AbstractFacade<Menus> implements MenusFacadeLocal {
 
     @PersistenceContext(unitName = "mingeso_Cafeteria-ejb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class ComidaFacade extends AbstractFacade<Comida> implements ComidaFacade
         return em;
     }
 
-    public ComidaFacade() {
-        super(Comida.class);
+    public MenusFacade() {
+        super(Menus.class);
     }
     
 }

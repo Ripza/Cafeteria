@@ -1,6 +1,14 @@
-entidades\Comida.class
 sessionbeans\ComidaFacadeLocal.class
-entidades\Comida_.class
 sessionbeans\AbstractFacade.class
+entidades\Menus.class
+sessionbeans\OrdermealFacade.class
+sessionbeans\MenusFacade.class
+sessionbeans\MenusFacadeLocal.class
+sessionbeans\OrdermealFacadeLocal.class
+entidades\Menus_.class
+entidades\Comida.class
+entidades\Comida_.class
 sessionbeans\ComidaFacade.class
+entidades\Ordermeal_.class
 controladores\Controlador_PrimeFaces.class
+entidades\Ordermeal.class

@@ -9,47 +9,46 @@
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-    
-        <h:form id="form">
-    <p:growl id="msgs" showDetail="true" />
- 
-    <h:panelGrid columns="2" cellpadding="5">
-        <p:outputLabel for="event" value="Por favor elegir una fecha:" />
-        <p:calendar id="event" value="#{calctrl.date4}" mode="inline" >
-            <p:ajax event="dateSelect" listener="#{calctrl.onDateSelect}" update="msgs" />
-        </p:calendar>
-        
-         <p:outputLabel for="time" value="Time:" />
-        <p:calendar id="time" value="#{controlador_PrimeFaces.date11}" pattern="HH" timeOnly="true"  />
-        
-            <br />
-        Quieres pene?
-            <br />
-            <h:inputText value="#{calctrl.miPene}" />
-            <h:commandButton value="Otropene" action="#{calctrl.pene()}" />
- 
-    </h:panelGrid>
- 
-    <p:commandButton value="Submit" update="msgs" actionListener="#{calctrl.click}" icon="ui-icon-check" />
- 
-    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
-        <p:panelGrid id="display" columns="2" columnClasses="label,value">
-            <h:outputText value="Event:" />
-            <h:outputText value="#{calctrl.date4}">
-                <f:convertDateTime pattern="MM/dd/yyyy" />
-            </h:outputText>
 
-            <br />
-            <h:outputText value="Time:" />
-            <h:outputText value="#{calctrl.date11}">
-                <f:convertDateTime pattern="HH:mm" />
-            </h:outputText>
-        </p:panelGrid>
-    </p:dialog>
-</h:form>
-        
-    
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true" />
+
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:outputLabel for="event" value="Por favor elegir una fecha:" />
+                <p:calendar id="event" value="#{calctrl.date4}" mode="inline" >
+                    <p:ajax event="dateSelect" listener="#{calctrl.onDateSelect}" update="msgs" />
+                </p:calendar>
+
+                <br />
+                Quieres ir al otro mundo?
+                <br />
+                <h:commandButton value="Otropene" action="#{calctrl.conectar_orden()}" />
+
+            </h:panelGrid>
+
+            <p:commandButton value="Submit" update="msgs" actionListener="#{calctrl.click}" icon="ui-icon-check" />
+
+            <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+                <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                    <h:outputText value="Event:" />
+                    <h:outputText value="#{calctrl.date4}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+
+                    <br />
+                    <h:outputText value="Time:" />
+                    <h:outputText value="#{calctrl.date11}">
+                        <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                </p:panelGrid>
+            </p:dialog>
+        </h:form>
+
+
+        <br />
+        <h:link outcome="/comida/List" value="Show All Comida Items"/>
     </h:body>
+
 
 </html>
 

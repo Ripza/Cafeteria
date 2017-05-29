@@ -5,7 +5,7 @@
  */
 package sessionbeans;
 
-import entidades.Comida;
+import entidades.Menus;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,19 +14,19 @@ import javax.ejb.Local;
  * @author Lene
  */
 @Local
-public interface ComidaFacadeLocal {
+public interface MenusFacadeLocal {
 
-    void create(Comida comida);
+    void create(Menus menus);
 
-    void edit(Comida comida);
+    void edit(Menus menus);
 
-    void remove(Comida comida);
+    void remove(Menus menus);
 
-    Comida find(Object id);
+    Menus find(Object id);
 
-    List<Comida> findAll();
+    List<Menus> findAll();
 
-    List<Comida> findRange(int[] range);
+    List<Menus> findRange(int[] range);
 
     int count();
     

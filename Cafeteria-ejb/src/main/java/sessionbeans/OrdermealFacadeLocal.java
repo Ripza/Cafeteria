@@ -5,7 +5,7 @@
  */
 package sessionbeans;
 
-import entidades.Comida;
+import entidades.Ordermeal;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,19 +14,19 @@ import javax.ejb.Local;
  * @author Lene
  */
 @Local
-public interface ComidaFacadeLocal {
+public interface OrdermealFacadeLocal {
 
-    void create(Comida comida);
+    void create(Ordermeal ordermeal);
 
-    void edit(Comida comida);
+    void edit(Ordermeal ordermeal);
 
-    void remove(Comida comida);
+    void remove(Ordermeal ordermeal);
 
-    Comida find(Object id);
+    Ordermeal find(Object id);
 
-    List<Comida> findAll();
+    List<Ordermeal> findAll();
 
-    List<Comida> findRange(int[] range);
+    List<Ordermeal> findRange(int[] range);
 
     int count();
     

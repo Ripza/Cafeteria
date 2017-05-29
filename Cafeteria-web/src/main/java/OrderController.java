@@ -5,6 +5,7 @@
  */
 
  
+import controladores.ComidaController;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -46,19 +47,74 @@ public class OrderController implements Serializable {
     @ManagedProperty(value="#{calctrl}")
     private CalendarioController calendarioController;
 
+    
+    @ManagedProperty(value="#{comidaController}")
+    private ComidaController comidaController ;
+
+    public ComidaController getComidaController() {
+        return comidaController;
+    }
+
+    public void setComidaController(ComidaController comidaController) {
+        this.comidaController = comidaController;
+    }
+    
+    
+    private List<Comida> comidas;
+    private Comida asd;
+    
+    private Comida comidaseleccionada;
+    private List<Comida> comidaSeleccionadas;
+
+    public Comida getComidaseleccionada() {
+        return comidaseleccionada;
+    }
+
+    public void setComidaseleccionada(Comida comidaseleccionada) {
+        this.comidaseleccionada = comidaseleccionada;
+    }
+
+    public List<Comida> getComidaSeleccionadas() {
+        return comidaSeleccionadas;
+    }
+
+    public void setComidaSeleccionadas(List<Comida> comidaSeleccionadas) {
+        this.comidaSeleccionadas = comidaSeleccionadas;
+    }
+
+    public Comida getAsd() {
+        return asd;
+    }
+
+    public void setAsd(Comida asd) {
+        this.asd = asd;
+    }
+
+    public List<Comida> getComidas() {
+        return comidas;
+    }
+
+    public void setComidas(List<Comida> comidas) {
+        this.comidas = comidas;
+    }
+
     public CalendarioController getCalendarioController() {
         return calendarioController;
     }
 
     public void setCalendarioController(CalendarioController calendarioController) {
+        System.out.println("Estono");
         this.calendarioController = calendarioController;
     }
+    
+    
+
     private String otroPene;
 
     public String getOtroPene() {
         System.out.println("NOSE");
         if(calendarioController != null) {
-            System.out.println("NOSEEE");
+            System.out.println("NOSEPEEEEEE");
          otroPene = calendarioController.getMiPene();
       }       
       return otroPene;
@@ -73,6 +129,12 @@ public class OrderController implements Serializable {
         System.out.println("Nohay");
         System.out.println(calendarioController.getMiPene());
     }
+    
+    @PostConstruct
+    public void init() {
+       this.comidas = comidaController.getItems();
+    }
+    
     /**
      * Creates a new instance of OrderController
      */
@@ -81,43 +143,14 @@ public class OrderController implements Serializable {
       System.out.println("OrderController started!");   
     }
     
-    private List<Comida> comidas;
-    private Comida selectedComida;
-    private List<Comida> selectedComidas;
-    
-     
-    @PostConstruct
-    public void init() {
-    }
- 
-    public List<Comida> getComidas1() {
-        return comidas;
-    }
-     
- 
-    public Comida getSelectedComida() {
-        return selectedComida;
-    }
- 
-    public void setSelectedComida(Comida selectedComida) {
-        this.selectedComida = selectedComida;
-    }
- 
-    public List<Comida> getSelectedComidas() {
-        return selectedComidas;
-    }
- 
-    public void setSelectedComidas(List<Comida> selectedComidas) {
-        this.selectedComidas = selectedComidas;
-    }
-     
     public void onRowSelect(SelectEvent event) {
-        FacesMessage msg = new FacesMessage("Comida Selected", ((Comida) event.getObject()).getIdComida()+"");
+        FacesMessage msg = new FacesMessage("Car Selected", ((Comida) event.getObject()).getIdComida()+"");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
  
     public void onRowUnselect(UnselectEvent event) {
-        FacesMessage msg = new FacesMessage("Comida Unselected", ((Comida) event.getObject()).getIdComida()+"");
+        FacesMessage msg = new FacesMessage("Car Unselected", ((Comida) event.getObject()).getIdComida()+"");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
+    
 }

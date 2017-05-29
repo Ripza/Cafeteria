@@ -3,31 +3,17 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-    <managed-bean>
-        <managed-bean-name>controlador_PrimeFaces</managed-bean-name>
-        <managed-bean-class>controladores.Controlador_PrimeFaces</managed-bean-class>
-        <managed-bean-scope></managed-bean-scope>
-    </managed-bean>    
+
     <managed-bean>
         <managed-bean-name>CalendarioControllerBean</managed-bean-name>
         <managed-bean-class>CalendarioController</managed-bean-class>
-    
-    
-        <managed-bean-scope></managed-bean-scope></managed-bean>
-    <managed-bean>
-        <managed-bean-name>CalendarViewBean</managed-bean-name>
-        <managed-bean-class>CalendarioController</managed-bean-class>
-    
-    
-        <managed-bean-scope></managed-bean-scope></managed-bean>
+        <managed-bean-scope></managed-bean-scope>
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>OrderControllerBean</managed-bean-name>
         <managed-bean-class>OrderController</managed-bean-class>
-    
-    
-        <managed-bean-scope></managed-bean-scope></managed-bean>
-    
-    
+        <managed-bean-scope></managed-bean-scope>
+    </managed-bean>
     
     
     <application>
@@ -36,4 +22,8 @@
             <var>bundle</var>
         </resource-bundle>
     </application>
+    <managed-bean>
+        <managed-bean-name>ComidaControllerBean</managed-bean-name>
+        <managed-bean-class>controladores.ComidaController</managed-bean-class>
+    </managed-bean>
 </faces-config>

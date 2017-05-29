@@ -1,8 +1,8 @@
 package controladores;
 
 import entidades.Comida;
-import managedsbeans.util.JsfUtil;
-import managedsbeans.util.JsfUtil.PersistAction;
+import controladores.util.JsfUtil;
+import controladores.util.JsfUtil.PersistAction;
 import sessionbeans.ComidaFacadeLocal;
 
 import java.io.Serializable;
@@ -24,11 +24,12 @@ import javax.faces.convert.FacesConverter;
 public class ComidaController implements Serializable {
 
     @EJB
-    private ComidaFacadeLocal ejbFacade;
+    private sessionbeans.ComidaFacadeLocal ejbFacade;
     private List<Comida> items = null;
     private Comida selected;
 
     public ComidaController() {
+        System.out.println("MAUROOOOOOOOOOO NO ESTOY");
     }
 
     public Comida getSelected() {

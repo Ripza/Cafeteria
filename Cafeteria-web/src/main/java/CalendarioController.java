@@ -45,12 +45,13 @@ public class CalendarioController implements Serializable{
         facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
     }
     
-    public String pene()
+    public String conectar_orden()
     {
         setMiPene("asdsa");
+        System.out.println(getDate4());
         System.out.println(getMiPene());
         
-        System.out.println("Quiere pene, demosle pene");
+        System.out.println("Quiere algo, demosle algo");
         return "ordenPage";
     }
      
