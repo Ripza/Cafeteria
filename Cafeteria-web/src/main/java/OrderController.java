@@ -159,7 +159,7 @@ public class OrderController implements Serializable {
         System.out.println("NOSE");
         if(calendarioController != null) {
             System.out.println("NOSEPEEEEEE");
-         otroPene = calendarioController.getMiPene();
+         otroPene = calendarioController.getEjemplo();
       }       
       return otroPene;
     }
@@ -171,7 +171,7 @@ public class OrderController implements Serializable {
     public void mostrarValorPene()
     {
         System.out.println("Nohay");
-        System.out.println(calendarioController.getMiPene());
+        System.out.println(calendarioController.getEjemplo());
     }
     
     @PostConstruct

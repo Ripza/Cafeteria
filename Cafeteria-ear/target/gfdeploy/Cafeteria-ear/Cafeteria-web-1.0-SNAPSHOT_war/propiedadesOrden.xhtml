@@ -1,16 +1,99 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Rellene información de la orden</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
         <div>TODO write content</div>
-    </body>
+        <!--
+        Metodo de pago
+        Nombre persona 
+        Calle 
+        N°Calle
+        Depto
+        Ciudad
+        Comuna
+        Nro_contacto
+        Correo
+        -->
+        <h:form>
+            <p:panel id="panel" header="Orden Comida">
+
+                <p:messages id="msgs" />
+
+                    
+                    <p:outputLabel for="pago" value="Metodo de pago " />
+                    <p:selectOneMenu id="pago" required="true" value="#{propiedadesOrdenController.metodopago}" style="width:150px">
+                        <f:selectItem itemLabel="Seleccionar ..." itemValue="#{null}" noSelectionOption="true" />
+                        <f:selectItem itemLabel="Red Compra" itemValue="redcompra" noSelectionOption="false" />
+                        <f:selectItem itemLabel="MasterCard" itemValue="mastercard" noSelectionOption="false" />
+                        <f:selectItem itemLabel="Efectivo" itemValue="efectivo" noSelectionOption="false" />
+                    </p:selectOneMenu>
+                    
+                    <h:panelGrid columns="3" cellpadding="5">
+                
+                    <p:outputLabel for="nombre" value="Nombre: " />
+                    <p:inputText id="nombre" value="#{propiedadesOrdenController.nombre}" required="true" label="Nombre">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="nombre" display="icon" />
+
+                    <p:outputLabel for="calle" value="Calle: " />
+                    <p:inputText id="calle" value="#{propiedadesOrdenController.calle}" label="Calle" required="true">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="calle" id="msgLastname_calle" display="icon" />
+
+                    <p:outputLabel for="nrocalle" value="Numero de calle: " />
+                    <p:inputText id="nrocalle" value="#{propiedadesOrdenController.numeroCalle}" label="nroCalle" required="true">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="nrocalle" id="msgLastname_nrocalle" display="icon" />
+                   
+                    <p:outputLabel for="depto" value="Departamento" />
+                    <p:inputText id="depto" value="#{propiedadesOrdenController.depto}" label="Depto" required="true">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="depto" id="msgLastname_depto" display="icon" />
+                    
+                    
+                    <p:outputLabel for="ciudad" value="Ciudad" />
+                    <p:inputText id="ciudad" value="#{propiedadesOrdenController.ciudad}" label="Ciudad" required="true">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="ciudad" id="msgLastname_ciudad" display="icon" />
+                    
+                    
+                    <p:outputLabel for="comuna" value="Comuna" />
+                    <p:inputText id="comuna" value="#{propiedadesOrdenController.comuna}" label="Comuna" required="true">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="comuna" id="msgLastname_comuna" display="icon" />
+                    
+                    
+                    <p:outputLabel for="nrocontacto" value="Numero de contacto" />
+                    <p:inputText id="nrocontacto" value="#{propiedadesOrdenController.numeroContacto}" label="NroContacto" required="true">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="nrocontacto" id="msgLastname_nrocontacto" display="icon" />
+                    
+                    
+                    <p:outputLabel for="correo" value="Correo" />
+                    <p:inputText id="correo" value="#{propiedadesOrdenController.correo}" label="Correo" required="true">
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+                    <p:message for="correo" id="msgLastname_correo" display="icon" />
+                    
+                </h:panelGrid>
+
+                <p:commandButton value="Guardar" update="panel" actionListener="#{propiedadesOrdenController.guardarFormulario}" icon="ui-icon-check" />
+            </p:panel>
+        </h:form>
+        
+    </h:body>
 </html>

@@ -29,14 +29,14 @@ public class CalendarioController implements Serializable{
     private Date date10;
     private Date date11;
    
-    private String miPene = "AAAAAAAAA";
+    private String ejemplo = "AAAAAAAAA";
 
-    public String getMiPene() {
-        return miPene;
+    public String getEjemplo() {
+        return ejemplo;
     }
 
-    public void setMiPene(String miPene) {
-        this.miPene = miPene;
+    public void setEjemplo(String ejemplo) {
+        this.ejemplo = ejemplo;
     }
      
     public void onDateSelect(SelectEvent event) {
@@ -47,9 +47,9 @@ public class CalendarioController implements Serializable{
     
     public String conectar_orden()
     {
-        setMiPene("asdsa");
+        setEjemplo("asdsa");
         System.out.println(getDate4());
-        System.out.println(getMiPene());
+        System.out.println(getEjemplo());
         
         System.out.println("Quiere algo, demosle algo");
         return "ordenPage";
