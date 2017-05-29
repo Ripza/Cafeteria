@@ -14,7 +14,7 @@ import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
  
 @ManagedBean(name = "calctrl", eager = true)
-@RequestScoped
+@SessionScoped
 public class CalendarioController implements Serializable{
          
     private Date date1;

@@ -43,7 +43,7 @@ import javax.faces.event.ActionEvent;
  * @author Lene
  */
 @ManagedBean(name = "orderctrl", eager = true)
-@RequestScoped
+@SessionScoped
 public class OrderController implements Serializable {
         
     @ManagedProperty(value="#{calctrl}")
@@ -76,7 +76,7 @@ public class OrderController implements Serializable {
     public void setComidaSeleccionadaOrden(List<Comida> comidaSeleccionadaOrden) {
         this.comidaSeleccionadaOrden = comidaSeleccionadaOrden;
     }
-    static private List<Comida> comidasEnOrden;
+    private List<Comida> comidasEnOrden;
 
     public List<Comida> getComidasEnOrden() {
         return comidasEnOrden;
