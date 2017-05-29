@@ -142,7 +142,7 @@ public class OrderController implements Serializable {
     public String ir_confirmacion()
     {
         System.out.println("Confirmando orden");
-        return "ordenConfirmada";
+        return "comidaConfirmada";
     }
     
     public void eliminarComida()

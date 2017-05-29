@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-import controladores.ComidaController;
 import entidades.Comida;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +17,16 @@ import javax.faces.bean.ManagedProperty;
  *
  * @author Lene
  */
-@ManagedBean(name = "orderConfirmadaController", eager = true)
+@ManagedBean(name = "ordenComidaController", eager = true)
 @RequestScoped
-public class OrderConfirmadaController {
+public class OrdenComidaController {
+
+    /**
+     * Creates a new instance of OrdenComidaController
+     */
+    public OrdenComidaController() {
+    }
+    
 
     @ManagedProperty(value="#{orderctrl}")
     private OrderController orderController ;
@@ -48,12 +54,6 @@ public class OrderConfirmadaController {
        if(comidaSeleccionada == null){
         comidaSeleccionada = new ArrayList();
        }
-    }
-    
-    /**
-     * Creates a new instance of OrderConfirmadaController
-     */
-    public OrderConfirmadaController() {
     }
     
 }
