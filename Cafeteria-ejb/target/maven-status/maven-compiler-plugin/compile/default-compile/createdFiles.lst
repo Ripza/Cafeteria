@@ -7,8 +7,10 @@ sessionbeans\MenusFacadeLocal.class
 sessionbeans\OrdermealFacadeLocal.class
 entidades\Menus_.class
 entidades\Comida.class
+entidades\Horarioocupado_.class
 entidades\Comida_.class
 sessionbeans\ComidaFacade.class
+entidades\Horarioocupado.class
 entidades\Ordermeal_.class
 controladores\Controlador_PrimeFaces.class
 entidades\Ordermeal.class

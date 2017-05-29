@@ -6,18 +6,21 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -89,9 +92,10 @@ public class Ordermeal implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "correo")
     private String correo;
-    @JoinColumn(name = "Menus_idMenus", referencedColumnName = "idMenus")
-    @ManyToOne(optional = false)
-    private Menus menusidMenus;
+    @ManyToMany(mappedBy = "ordermealList")
+    private List<Comida> comidaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderMealidOrderMeal")
+    private List<Horarioocupado> horarioocupadoList;
 
     public Ordermeal() {
     }
@@ -192,12 +196,22 @@ public class Ordermeal implements Serializable {
         this.correo = correo;
     }
 
-    public Menus getMenusidMenus() {
-        return menusidMenus;
+    @XmlTransient
+    public List<Comida> getComidaList() {
+        return comidaList;
     }
 
-    public void setMenusidMenus(Menus menusidMenus) {
-        this.menusidMenus = menusidMenus;
+    public void setComidaList(List<Comida> comidaList) {
+        this.comidaList = comidaList;
+    }
+
+    @XmlTransient
+    public List<Horarioocupado> getHorarioocupadoList() {
+        return horarioocupadoList;
+    }
+
+    public void setHorarioocupadoList(List<Horarioocupado> horarioocupadoList) {
+        this.horarioocupadoList = horarioocupadoList;
     }
 
     @Override

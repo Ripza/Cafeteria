@@ -8,13 +8,12 @@ package entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -45,8 +44,8 @@ public class Menus implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "especialDelDia")
     private String especialDelDia;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "menusidMenus")
-    private List<Ordermeal> ordermealList;
+    @ManyToMany(mappedBy = "menusList")
+    private List<Comida> comidaList;
 
     public Menus() {
     }
@@ -77,12 +76,12 @@ public class Menus implements Serializable {
     }
 
     @XmlTransient
-    public List<Ordermeal> getOrdermealList() {
-        return ordermealList;
+    public List<Comida> getComidaList() {
+        return comidaList;
     }
 
-    public void setOrdermealList(List<Ordermeal> ordermealList) {
-        this.ordermealList = ordermealList;
+    public void setComidaList(List<Comida> comidaList) {
+        this.comidaList = comidaList;
     }
 
     @Override
