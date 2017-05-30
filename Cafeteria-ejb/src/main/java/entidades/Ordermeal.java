@@ -6,9 +6,9 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,8 +19,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -44,7 +45,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Ordermeal.findByCiudad", query = "SELECT o FROM Ordermeal o WHERE o.ciudad = :ciudad")
     , @NamedQuery(name = "Ordermeal.findByComuna", query = "SELECT o FROM Ordermeal o WHERE o.comuna = :comuna")
     , @NamedQuery(name = "Ordermeal.findByNroContacto", query = "SELECT o FROM Ordermeal o WHERE o.nroContacto = :nroContacto")
-    , @NamedQuery(name = "Ordermeal.findByCorreo", query = "SELECT o FROM Ordermeal o WHERE o.correo = :correo")})
+    , @NamedQuery(name = "Ordermeal.findByCorreo", query = "SELECT o FROM Ordermeal o WHERE o.correo = :correo")
+    , @NamedQuery(name = "Ordermeal.findByHorarioOcupado", query = "SELECT o FROM Ordermeal o WHERE o.horarioOcupado = :horarioOcupado")})
 public class Ordermeal implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -96,13 +98,17 @@ public class Ordermeal implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "correo")
     private String correo;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "horarioOcupado")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date horarioOcupado;
+    
     @JoinTable(name = "ordermeal_has_comida", joinColumns = {
     @JoinColumn(name = "ordermeal_idOrderMeal", referencedColumnName = "idOrderMeal")}, inverseJoinColumns = {
     @JoinColumn(name = "comida_idComida", referencedColumnName = "idComida")})
     @ManyToMany
     private List<Comida> comidaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderMealidOrderMeal")
-    private List<Horarioocupado> horarioocupadoList;
 
     public Ordermeal() {
     }
@@ -111,7 +117,7 @@ public class Ordermeal implements Serializable {
         this.idOrderMeal = idOrderMeal;
     }
 
-    public Ordermeal(Integer idOrderMeal, String metodoPago, String nombrePersona, String calle, String numCalle, String ciudad, String comuna, String nroContacto, String correo) {
+    public Ordermeal(Integer idOrderMeal, String metodoPago, String nombrePersona, String calle, String numCalle, String ciudad, String comuna, String nroContacto, String correo, Date horarioOcupado) {
         this.idOrderMeal = idOrderMeal;
         this.metodoPago = metodoPago;
         this.nombrePersona = nombrePersona;
@@ -121,6 +127,7 @@ public class Ordermeal implements Serializable {
         this.comuna = comuna;
         this.nroContacto = nroContacto;
         this.correo = correo;
+        this.horarioOcupado = horarioOcupado;
     }
 
     public Integer getIdOrderMeal() {
@@ -203,6 +210,14 @@ public class Ordermeal implements Serializable {
         this.correo = correo;
     }
 
+    public Date getHorarioOcupado() {
+        return horarioOcupado;
+    }
+
+    public void setHorarioOcupado(Date horarioOcupado) {
+        this.horarioOcupado = horarioOcupado;
+    }
+
     @XmlTransient
     public List<Comida> getComidaList() {
         return comidaList;
@@ -210,15 +225,6 @@ public class Ordermeal implements Serializable {
 
     public void setComidaList(List<Comida> comidaList) {
         this.comidaList = comidaList;
-    }
-
-    @XmlTransient
-    public List<Horarioocupado> getHorarioocupadoList() {
-        return horarioocupadoList;
-    }
-
-    public void setHorarioocupadoList(List<Horarioocupado> horarioocupadoList) {
-        this.horarioocupadoList = horarioocupadoList;
     }
 
     @Override

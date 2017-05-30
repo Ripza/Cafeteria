@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Bienvenido a la cafetería de Chile</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
@@ -13,23 +13,28 @@
         <h:form id="form">
             <p:growl id="msgs" showDetail="true" />
 
-            <h:panelGrid columns="2" cellpadding="5">
+            <h:panelGrid columns="1" cellpadding="5" style="display:block; text-align:center">
+                
+                <br />
+                <p:outputLabel for="event" value="¡Hola #{calctrl.nombre}!" />
+                
+                
+                <br />
                 <p:outputLabel for="event" value="Por favor elegir una fecha:" />
-                <p:calendar id="event" value="#{calctrl.date4}" mode="inline" >
+                <p:calendar id="event" value="#{calctrl.date4}" mode="inline" locale="es"  >
                     <p:ajax event="dateSelect" listener="#{calctrl.onDateSelect}" update="msgs" />
                 </p:calendar>
 
                 <br />
-                Quieres ir al otro mundo?
+                ¿Comencemos la orden?
                 <br />
-                <h:commandButton value="Ir a la orden" action="#{calctrl.conectar_orden()}" />
+                <p:commandButton value="Ir a la orden" action="#{calctrl.conectar_orden()}" />
 
             </h:panelGrid>
 
-            <p:commandButton value="Submit" update="msgs" actionListener="#{calctrl.click}" icon="ui-icon-check" />
-
+            
             <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
-                <p:panelGrid id="display" columns="2" columnClasses="label,value">
+                <p:panelGrid id="display" columns="2" columnClasses="label,value" style="display:block; text-align:center">
                     <h:outputText value="Event:" />
                     <h:outputText value="#{calctrl.date4}">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
@@ -55,6 +60,39 @@
         <h:link outcome="/ordermeal/List" value="Show All Ordermeal Items"/>
         <br />
         <h:link outcome="/menus/List" value="Show All Menus Items"/>
+        
+    <script>
+
+
+        PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero','Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+                dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+                dayNamesShort: ['Dom','Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                dayNamesMin: ['D','L','M','M','J','V','S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Sólo hora',
+                timeText: 'Tiempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Fecha actual',
+                ampm: false,
+                month: 'Mes',
+                week: 'Semana',
+                day: 'Día',
+                allDayText : 'Todo el día'
+        };
+       
+    </script>
+        
     </h:body>
 
 

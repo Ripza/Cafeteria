@@ -37,6 +37,7 @@ import org.primefaces.event.UnselectEvent;
 import entidades.Comida;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import javax.faces.event.ActionEvent;
 import org.primefaces.context.RequestContext;
@@ -73,11 +74,31 @@ public class OrderController implements Serializable {
     private Comida comidaSeleccionadaOrden;
     private int precio_total;
     private String diaSemana;
+    private Date hora_orden;
+    private String nombre;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Date getHora_orden() {
+        return hora_orden;
+    }
+
+    public void setHora_orden(Date hora_orden) {
+        this.hora_orden = hora_orden;
+    }
 
     public String getDiaSemana() {
+        limpiarSeleccion();
         int dia_int;
         Calendar c = Calendar.getInstance();
          c.setTime(getCalendarioController().getDate4());
+         hora_orden = getCalendarioController().getDate4();
          dia_int = c.get(Calendar.DAY_OF_WEEK);
          System.out.println(""+c.getTime());
          System.out.println("Dia:"+dia_int);
@@ -105,6 +126,11 @@ public class OrderController implements Serializable {
         this.diaSemana = diaSemana;
     }
 
+    public void limpiarSeleccion()
+    {
+        this.comidaSeleccionadas = null;
+    }
+    
     public int getPrecio_total() {
         return precio_total;
     }
@@ -252,6 +278,11 @@ public class OrderController implements Serializable {
        
        if(comidaSeleccionadaOrden == null){
         comidaSeleccionadaOrden = new Comida();
+        
+        if(nombre == null)
+        {
+            nombre = calendarioController.getNombre();
+        }
        }
       
         

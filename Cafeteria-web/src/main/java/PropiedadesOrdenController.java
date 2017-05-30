@@ -12,6 +12,8 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -51,6 +53,33 @@ public class PropiedadesOrdenController implements Serializable {
     private String comuna;
     private String numeroContacto;
     private String correo;
+    private Date horaOrden;
+    private String horaSeleccion;
+
+    public String getHoraSeleccion() {
+        return horaSeleccion;
+    }
+
+    public void setHoraSeleccion(String horaSeleccion) {
+        int hora = Integer.parseInt(horaSeleccion);
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY,hora);
+        cal.set(Calendar.MINUTE,0);
+        cal.set(Calendar.SECOND,0);
+        cal.set(Calendar.MILLISECOND,0);
+
+        horaOrden = cal.getTime();
+        
+        this.horaSeleccion = horaSeleccion;
+    }
+
+    public Date getHoraOrden() {
+        return horaOrden;
+    }
+
+    public void setHoraOrden(Date horaOrden) {
+        this.horaOrden = horaOrden;
+    }
 
     
     @ManagedProperty(value="#{orderctrl}")
@@ -82,6 +111,14 @@ public class PropiedadesOrdenController implements Serializable {
        this.comidaSeleccionada = orderController.getComidasEnOrden();
        if(comidaSeleccionada == null){
         comidaSeleccionada = new ArrayList();
+       }
+       if(horaOrden == null)
+       {
+           horaOrden= orderController.getHora_orden();
+       }
+       if(nombre == null)
+       {
+           nombre = orderController.getNombre();
        }
     }
     
@@ -198,6 +235,7 @@ public class PropiedadesOrdenController implements Serializable {
         nuevaOrden.setCorreo(getCorreo());
         nuevaOrden.setMetodoPago(getMetodopago());
         nuevaOrden.setComidaList(getComidaSeleccionada());
+        nuevaOrden.setHorarioOcupado(getHoraOrden());
         
         try{
             ordermealController.setSelected(nuevaOrden);

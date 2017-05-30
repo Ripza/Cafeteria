@@ -48,6 +48,14 @@
                         <f:selectItem itemLabel="Efectivo" itemValue="efectivo" noSelectionOption="false" />
                     </p:selectOneMenu>
                     
+                    <p:outputLabel for="hora_entrega" value="Hora de entrega: " />
+                    <p:selectOneMenu id="hora_entrega" required="true" value="#{propiedadesOrdenController.horaSeleccion}" style="width:150px">
+                        <f:selectItem itemLabel="Seleccionar ..." itemValue="#{null}" noSelectionOption="true" />
+                        <f:selectItem itemLabel="12:00" itemValue="12" noSelectionOption="false" />
+                        <f:selectItem itemLabel="13:00" itemValue="13" noSelectionOption="false" />
+                        <f:selectItem itemLabel="14:00" itemValue="14" noSelectionOption="false" />
+                    </p:selectOneMenu>
+                    
                     <h:panelGrid columns="3" cellpadding="5">
                 
                     <p:outputLabel for="nombre" value="Nombre: " />
