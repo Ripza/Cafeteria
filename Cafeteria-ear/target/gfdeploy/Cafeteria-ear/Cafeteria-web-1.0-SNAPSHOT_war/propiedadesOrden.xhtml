@@ -26,7 +26,20 @@
 
                 <p:messages id="msgs" />
 
-                    
+                <h:form id="form">
+
+                <p:dataTable var="comida" value="#{comidaConfirmadaController.comidaSeleccionada}">
+                <p:column headerText="Id">
+                    <h:outputText value="#{comida.idComida}" />
+                </p:column>
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{comida.nombre}" />
+                </p:column>
+                <p:column headerText="Precio">
+                    <h:outputText value="#{comida.precio}" />
+                </p:column>
+                </p:dataTable>
+                </h:form>
                     <p:outputLabel for="pago" value="Metodo de pago " />
                     <p:selectOneMenu id="pago" required="true" value="#{propiedadesOrdenController.metodopago}" style="width:150px">
                         <f:selectItem itemLabel="Seleccionar ..." itemValue="#{null}" noSelectionOption="true" />

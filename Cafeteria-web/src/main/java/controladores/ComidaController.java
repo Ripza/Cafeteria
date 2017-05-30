@@ -1,8 +1,8 @@
 package controladores;
 
 import entidades.Comida;
-import controladores.util.JsfUtil;
-import controladores.util.JsfUtil.PersistAction;
+import controladores.util.util.JsfUtil;
+import controladores.util.util.JsfUtil.PersistAction;
 import sessionbeans.ComidaFacadeLocal;
 
 import java.io.Serializable;
@@ -29,7 +29,6 @@ public class ComidaController implements Serializable {
     private Comida selected;
 
     public ComidaController() {
-        System.out.println("MAUROOOOOOOOOOO NO ESTOY");
     }
 
     public Comida getSelected() {

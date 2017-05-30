@@ -5,6 +5,7 @@
  */
 package sessionbeans;
 
+import entidades.Comida;
 import entidades.Ordermeal;
 import java.util.List;
 import javax.ejb.Local;
@@ -29,5 +30,7 @@ public interface OrdermealFacadeLocal {
     List<Ordermeal> findRange(int[] range);
 
     int count();
+
+    void insertarComidas(List<Comida> comidas, int idOrder);
     
 }

@@ -11,7 +11,11 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -45,8 +49,8 @@ public class Ordermeal implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "idOrderMeal")
     private Integer idOrderMeal;
     @Basic(optional = false)
@@ -92,7 +96,10 @@ public class Ordermeal implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "correo")
     private String correo;
-    @ManyToMany(mappedBy = "ordermealList")
+    @JoinTable(name = "ordermeal_has_comida", joinColumns = {
+    @JoinColumn(name = "ordermeal_idOrderMeal", referencedColumnName = "idOrderMeal")}, inverseJoinColumns = {
+    @JoinColumn(name = "comida_idComida", referencedColumnName = "idComida")})
+    @ManyToMany
     private List<Comida> comidaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderMealidOrderMeal")
     private List<Horarioocupado> horarioocupadoList;

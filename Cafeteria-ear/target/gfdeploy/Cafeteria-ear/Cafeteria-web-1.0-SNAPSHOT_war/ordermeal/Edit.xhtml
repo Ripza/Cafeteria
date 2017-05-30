@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OrdermealEditDlg" widgetVar="OrdermealEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOrdermealTitle}">
+            <h:form id="OrdermealEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ordermealController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOrdermealLabel_idOrderMeal}" for="idOrderMeal" />
+                        <p:inputText id="idOrderMeal" value="#{ordermealController.selected.idOrderMeal}" title="#{bundle.EditOrdermealTitle_idOrderMeal}" required="true" requiredMessage="#{bundle.EditOrdermealRequiredMessage_idOrderMeal}"/>
+                        <p:outputLabel value="#{bundle.EditOrdermealLabel_metodoPago}" for="metodoPago" />
+                        <p:inputText id="metodoPago" value="#{ordermealController.selected.metodoPago}" title="#{bundle.EditOrdermealTitle_metodoPago}" required="true" requiredMessage="#{bundle.EditOrdermealRequiredMessage_metodoPago}"/>
+                        <p:outputLabel value="#{bundle.EditOrdermealLabel_nombrePersona}" for="nombrePersona" />
+                        <p:inputText id="nombrePersona" value="#{ordermealController.selected.nombrePersona}" title="#{bundle.EditOrdermealTitle_nombrePersona}" required="true" requiredMessage="#{bundle.EditOrdermealRequiredMessage_nombrePersona}"/>
+                        <p:outputLabel value="#{bundle.EditOrdermealLabel_calle}" for="calle" />
+                        <p:inputText id="calle" value="#{ordermealController.selected.calle}" title="#{bundle.EditOrdermealTitle_calle}" required="true" requiredMessage="#{bundle.EditOrdermealRequiredMessage_calle}"/>
+                        <p:outputLabel value="#{bundle.EditOrdermealLabel_numCalle}" for="numCalle" />
+                        <p:inputText id="numCalle" value="#{ordermealController.selected.numCalle}" title="#{bundle.EditOrdermealTitle_numCalle}" required="true" requiredMessage="#{bundle.EditOrdermealRequiredMessage_numCalle}"/>
+                        <p:outputLabel value="#{bundle.EditOrdermealLabel_depto}" for="depto" />
+                        <p:inputText id="depto" value="#{ordermealController.selected.depto}" title="#{bundle.EditOrdermealTitle_depto}" />
+                        <p:outputLabel value="#{bundle.EditOrdermealLabel_ciudad}" for="ciudad" />
+                        <p:inputText id="ciudad" value="#{ordermealController.selected.ciudad}" title="#{bundle.EditOrdermealTitle_ciudad}" required="true" requiredMessage="#{bundle.EditOrdermealRequiredMessage_ciudad}"/>
+                        <p:outputLabel value="#{bundle.EditOrdermealLabel_comuna}" for="comuna" />
+                        <p:inputText id="comuna" value="#{ordermealController.selected.comuna}" title="#{bundle.EditOrdermealTitle_comuna}" required="true" requiredMessage="#{bundle.EditOrdermealRequiredMessage_comuna}"/>
+                        <p:outputLabel value="#{bundle.EditOrdermealLabel_nroContacto}" for="nroContacto" />
+                        <p:inputText id="nroContacto" value="#{ordermealController.selected.nroContacto}" title="#{bundle.EditOrdermealTitle_nroContacto}" required="true" requiredMessage="#{bundle.EditOrdermealRequiredMessage_nroContacto}"/>
+                        <p:outputLabel value="#{bundle.EditOrdermealLabel_correo}" for="correo" />
+                        <p:inputText id="correo" value="#{ordermealController.selected.correo}" title="#{bundle.EditOrdermealTitle_correo}" required="true" requiredMessage="#{bundle.EditOrdermealRequiredMessage_correo}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ordermealController.update}" value="#{bundle.Save}" update="display,:OrdermealListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OrdermealEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OrdermealEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -2,7 +2,9 @@ sessionbeans\ComidaFacadeLocal.class
 sessionbeans\AbstractFacade.class
 entidades\Menus.class
 sessionbeans\OrdermealFacade.class
+sessionbeans\HorarioocupadoFacadeLocal.class
 sessionbeans\MenusFacade.class
+sessionbeans\HorarioocupadoFacade.class
 sessionbeans\MenusFacadeLocal.class
 sessionbeans\OrdermealFacadeLocal.class
 entidades\Menus_.class

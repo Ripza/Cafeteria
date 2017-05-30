@@ -57,16 +57,16 @@ public class Comida implements Serializable {
     @NotNull
     @Column(name = "precio")
     private int precio;
-    @JoinTable(name = "comida_has_ordermeal", joinColumns = {
-        @JoinColumn(name = "comida_idComida", referencedColumnName = "idComida")}, inverseJoinColumns = {
-        @JoinColumn(name = "ordermeal_idOrderMeal", referencedColumnName = "idOrderMeal")})
-    @ManyToMany
-    private List<Ordermeal> ordermealList;
-    @JoinTable(name = "comida_has_menus", joinColumns = {
+    @JoinTable(name = "menus_has_comida", joinColumns = {
         @JoinColumn(name = "comida_idComida", referencedColumnName = "idComida")}, inverseJoinColumns = {
         @JoinColumn(name = "menus_idMenus", referencedColumnName = "idMenus")})
     @ManyToMany
     private List<Menus> menusList;
+    @JoinTable(name = "ordermeal_has_comida", joinColumns = {
+        @JoinColumn(name = "comida_idComida", referencedColumnName = "idComida")}, inverseJoinColumns = {
+        @JoinColumn(name = "ordermeal_idOrderMeal", referencedColumnName = "idOrderMeal")})
+    @ManyToMany(mappedBy = "comidaList")
+    private List<Ordermeal> ordermealList;
 
     public Comida() {
     }
@@ -114,21 +114,21 @@ public class Comida implements Serializable {
     }
 
     @XmlTransient
-    public List<Ordermeal> getOrdermealList() {
-        return ordermealList;
-    }
-
-    public void setOrdermealList(List<Ordermeal> ordermealList) {
-        this.ordermealList = ordermealList;
-    }
-
-    @XmlTransient
     public List<Menus> getMenusList() {
         return menusList;
     }
 
     public void setMenusList(List<Menus> menusList) {
         this.menusList = menusList;
+    }
+
+    @XmlTransient
+    public List<Ordermeal> getOrdermealList() {
+        return ordermealList;
+    }
+
+    public void setOrdermealList(List<Ordermeal> ordermealList) {
+        this.ordermealList = ordermealList;
     }
 
     @Override

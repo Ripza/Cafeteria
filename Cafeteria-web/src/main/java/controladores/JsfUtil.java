@@ -1,4 +1,4 @@
-package controladores.util;
+package controladores;
 
 import java.util.List;
 import javax.faces.application.FacesMessage;

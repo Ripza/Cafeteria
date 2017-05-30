@@ -5,7 +5,9 @@
  */
 package sessionbeans;
 
+import entidades.Comida;
 import entidades.Ordermeal;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,6 +25,23 @@ public class OrdermealFacade extends AbstractFacade<Ordermeal> implements Orderm
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+    @Override
+    public void insertarComidas(List<Comida> comidas, int idOrder)
+    {
+        if(comidas == null)
+            System.out.println("Comidas NULL");
+        if(idOrder <= 1)
+            System.out.println("OrderMeal ID NULL");
+        
+        System.out.println("JOIN TABLE CON ID: "+idOrder);
+        for(Comida comida:comidas)
+        {
+            String query = "INSERT INTO ordermeal_has_comida VALUES ("+idOrder+","+comida.getIdComida().toString()+"); ";
+            System.out.println(query);
+            getEntityManager().createNativeQuery(query, Comida.class);
+        }
     }
 
     public OrdermealFacade() {

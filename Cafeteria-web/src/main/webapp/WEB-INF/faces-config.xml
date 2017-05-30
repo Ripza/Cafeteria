@@ -21,6 +21,10 @@
             <base-name>/Bundle</base-name>
             <var>bundle</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>/Bundle2</base-name>
+            <var>bundle2</var>
+        </resource-bundle>
     </application>
     <managed-bean>
         <managed-bean-name>ComidaControllerBean</managed-bean-name>
