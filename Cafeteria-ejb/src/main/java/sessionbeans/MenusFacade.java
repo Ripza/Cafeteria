@@ -5,10 +5,13 @@
  */
 package sessionbeans;
 
+import entidades.Comida;
 import entidades.Menus;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -23,6 +26,13 @@ public class MenusFacade extends AbstractFacade<Menus> implements MenusFacadeLoc
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+    public List<Menus> getMenuByDay()
+    {
+        TypedQuery<Menus> query =
+        em.createNamedQuery("Menus.findByEspecialDelDia", Menus.class);
+        return query.getResultList();
     }
 
     public MenusFacade() {

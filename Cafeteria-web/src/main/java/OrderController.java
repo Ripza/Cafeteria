@@ -36,7 +36,10 @@ import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 import entidades.Comida;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
 import javax.faces.event.ActionEvent;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -67,15 +70,58 @@ public class OrderController implements Serializable {
     
     private Comida comidaseleccionada;
     private List<Comida> comidaSeleccionadas;
-    private List<Comida> comidaSeleccionadaOrden;
+    private Comida comidaSeleccionadaOrden;
+    private int precio_total;
+    private String diaSemana;
 
-    public List<Comida> getComidaSeleccionadaOrden() {
+    public String getDiaSemana() {
+        int dia_int;
+        Calendar c = Calendar.getInstance();
+         c.setTime(getCalendarioController().getDate4());
+         dia_int = c.get(Calendar.DAY_OF_WEEK);
+         System.out.println(""+c.getTime());
+         System.out.println("Dia:"+dia_int);
+         switch(dia_int){
+             case 0: diaSemana = "S";
+                     break;
+             case 1: diaSemana = "D";
+                     break;
+             case 2: diaSemana = "L";
+                     break;
+             case 3: diaSemana = "M";
+                     break;
+             case 4: diaSemana = "W";
+                     break;
+             case 5: diaSemana = "J";
+                     break;
+             case 6: diaSemana = "V";
+                     break;
+
+         }
+        return diaSemana;
+    }
+
+    public void setDiaSemana(String diaSemana) {
+        this.diaSemana = diaSemana;
+    }
+
+    public int getPrecio_total() {
+        return precio_total;
+    }
+
+    public void setPrecio_total(int precio_total) {
+        this.precio_total = precio_total;
+    }
+   
+    
+    public Comida getComidaSeleccionadaOrden() {
         return comidaSeleccionadaOrden;
     }
 
-    public void setComidaSeleccionadaOrden(List<Comida> comidaSeleccionadaOrden) {
+    public void setComidaSeleccionadaOrden(Comida comidaSeleccionadaOrden) {
         this.comidaSeleccionadaOrden = comidaSeleccionadaOrden;
     }
+
     private List<Comida> comidasEnOrden;
 
     public List<Comida> getComidasEnOrden() {
@@ -146,29 +192,52 @@ public class OrderController implements Serializable {
     }
     public void eliminarComida()
     {
-        
+        if(this.comidaSeleccionadaOrden == null)
+            return;
         System.out.println("Comidas eliminadas");
-        if(comidasEnOrden != null)
-            comidasEnOrden.removeAll(comidaSeleccionadaOrden);
-        System.out.println(comidaSeleccionadaOrden);
+        System.out.println("Comidad a eliminar:"+this.comidaSeleccionadaOrden);
+        //List<Comida> nuevaListaComidaOrden = new ArrayList<>();
+        
+        Iterator comidaIterator = this.comidasEnOrden.iterator();
+
+        while(comidaIterator.hasNext())
+        {
+            if(this.comidaSeleccionadaOrden == comidaIterator.next())
+            {
+                comidaIterator.remove();
+                break;
+            }
+        }
+        RequestContext.getCurrentInstance().update("checkboxDT2");
+        //comidaSeleccionadaOrden = null;
+    }
+    public int totalSeleccion()
+    {
+        int total_precio = 0;
+        for(int i=0;i<this.getComidasEnOrden().size();i++)
+        {
+            total_precio = total_precio + this.getComidasEnOrden().get(i).getPrecio();
+        }
+        this.precio_total = total_precio;
+        return total_precio;
     }
 
-    private String otroPene;
+    private String ejemplo;
 
-    public String getOtroPene() {
+    public String getEjemplo() {
         System.out.println("NOSE");
         if(calendarioController != null) {
             System.out.println("NOSEPEEEEEE");
-         otroPene = calendarioController.getEjemplo();
+         ejemplo = calendarioController.getEjemplo();
       }       
-      return otroPene;
+      return ejemplo;
     }
 
-    public void setOtroPene(String otroPene) {
-        this.otroPene = otroPene;
+    public void setEjemplo(String ejemplo) {
+        this.ejemplo = ejemplo;
     }
 
-    public void mostrarValorPene()
+    public void mostrarValorEjemplo()
     {
         System.out.println("Nohay");
         System.out.println(calendarioController.getEjemplo());
@@ -182,8 +251,11 @@ public class OrderController implements Serializable {
        }
        
        if(comidaSeleccionadaOrden == null){
-        comidaSeleccionadaOrden = new ArrayList();
+        comidaSeleccionadaOrden = new Comida();
        }
+      
+        
+       
        
        
     }

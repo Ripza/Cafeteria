@@ -5,12 +5,13 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Selección Comida</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
     
         <p>Welcome #{orderctrl.calendarioController.date4}</p>
+        <p>Welcome #{orderctrl.diaSemana}</p>
         
         
         <h:form id="form">
@@ -33,12 +34,11 @@
         </f:facet>
         </p:dataTable>
        
-            
-        <p:dataTable id="checkboxDT2" var="comida" value="#{orderctrl.comidasEnOrden}" selection="#{orderctrl.comidaSeleccionadaOrden}" rowKey="#{comida.idComida}" style="margin-bottom:0">
+             
+            <p:dataTable id="checkboxDT2" var="comida" value="#{orderctrl.comidasEnOrden}" selectionMode="single" selection="#{orderctrl.comidaSeleccionadaOrden}" rowKey="#{comida.idComida}" style="margin-bottom:0" sortBy="#{comida.nombre}">
         <f:facet name="header">
-            Checkbox
+            Checkbox2
         </f:facet>
-        <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
         <p:column headerText="Id">
             <h:outputText value="#{comida.idComida}" />
         </p:column>
@@ -48,13 +48,18 @@
         <p:column headerText="Precio">
             <h:outputText value="#{comida.precio}" />
         </p:column>
-        
-        </p:dataTable>
-        
+                
         <f:facet name="footer">
-           <p:commandButton process="checkboxDT2" id="eliminarComidas" value="Eliminar Comida" update=":form:checkboxDT2" action="#{orderctrl.eliminarComida}"/>
+            <br />
+            <h:outputText id="comidastotal" value="Total: $#{orderctrl.totalSeleccion()}" />
+            <br />
+            <p:commandButton process="checkboxDT2" update=":form:checkboxDT2" icon="fa fa-ban" value="Eliminate" action="#{orderctrl.eliminarComida()}" />
+            <p:commandButton process="checkboxDT2" id="actualizar" value="Actualizar" update=":form:checkboxDT2"/>
         </f:facet>
-        <h:commandButton value="Confirmar Orden" action="#{orderctrl.ir_confirmacion()}" />
+        </p:dataTable>
+        <p:commandButton value="Confirmar Orden" action="#{orderctrl.ir_confirmacion()}" />
+        
+        
         </h:form>
     </h:body>
 </html>

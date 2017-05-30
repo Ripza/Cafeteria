@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MenusCreateDlg" widgetVar="MenusCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMenusTitle}">
+            <h:form id="MenusCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{menusController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMenusLabel_idMenus}" for="idMenus" />
+                        <p:inputText id="idMenus" value="#{menusController.selected.idMenus}" title="#{bundle.CreateMenusTitle_idMenus}" required="true" requiredMessage="#{bundle.CreateMenusRequiredMessage_idMenus}"/>
+                        <p:outputLabel value="#{bundle.CreateMenusLabel_especialDelDia}" for="especialDelDia" />
+                        <p:inputText id="especialDelDia" value="#{menusController.selected.especialDelDia}" title="#{bundle.CreateMenusTitle_especialDelDia}" required="true" requiredMessage="#{bundle.CreateMenusRequiredMessage_especialDelDia}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{menusController.create}" value="#{bundle.Save}" update="display,:MenusListForm:datalist,:growl" oncomplete="handleSubmit(args,'MenusCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MenusCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
