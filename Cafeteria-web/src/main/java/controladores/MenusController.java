@@ -3,7 +3,7 @@ package controladores;
 import entidades.Menus;
 import controladores.util.JsfUtil;
 import controladores.util.JsfUtil.PersistAction;
-import managedsbeans.util.MenusFacade;
+import sessionbeans.MenusFacadeLocal;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,12 +19,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
+
 @Named("menusController")
 @SessionScoped
 public class MenusController implements Serializable {
 
-    @EJB
-    private managedsbeans.util.MenusFacade ejbFacade;
+
+    @EJB private sessionbeans.MenusFacadeLocal ejbFacade;
     private List<Menus> items = null;
     private Menus selected;
 
@@ -45,7 +46,7 @@ public class MenusController implements Serializable {
     protected void initializeEmbeddableKey() {
     }
 
-    private MenusFacade getFacade() {
+    private MenusFacadeLocal getFacade() {
         return ejbFacade;
     }
 
@@ -121,7 +122,7 @@ public class MenusController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = Menus.class)
+    @FacesConverter(forClass=Menus.class)
     public static class MenusControllerConverter implements Converter {
 
         @Override
@@ -129,7 +130,7 @@ public class MenusController implements Serializable {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            MenusController controller = (MenusController) facesContext.getApplication().getELResolver().
+            MenusController controller = (MenusController)facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "menusController");
             return controller.getMenus(getKey(value));
         }
