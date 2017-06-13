@@ -28,7 +28,7 @@ public interface MenusFacadeLocal {
 
     List<Menus> findRange(int[] range);
 
-    public List<Menus> getMenuByDay();
+    public List<Menus> getMenuByDay(String date);
     int count();
     
 }

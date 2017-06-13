@@ -47,11 +47,8 @@ public class CalendarioController implements Serializable{
     
     public String conectar_orden()
     {
-        setEjemplo("asdsa");
         System.out.println(getDate4());
         System.out.println(getEjemplo());
-        
-        System.out.println("Quiere algo, demosle algo");
         return "ordenPage";
     }
      

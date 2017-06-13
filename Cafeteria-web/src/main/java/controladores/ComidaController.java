@@ -80,6 +80,12 @@ public class ComidaController implements Serializable {
         }
         return items;
     }
+    public List<Comida> getItemsbyDateMenu(String date) {
+        if (items == null) {
+            items = getFacade().findAll();
+        }
+        return items;
+    }
 
     private void persist(PersistAction persistAction, String successMessage) {
         if (selected != null) {

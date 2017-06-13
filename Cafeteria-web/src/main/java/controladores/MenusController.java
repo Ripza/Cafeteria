@@ -113,6 +113,12 @@ public class MenusController implements Serializable {
     public Menus getMenus(java.lang.Integer id) {
         return getFacade().find(id);
     }
+    
+    
+    public List<Menus> getMenuByDay(String date) {
+        System.out.println("MenuController");
+        return getFacade().getMenuByDay(date);
+    }
 
     public List<Menus> getItemsAvailableSelectMany() {
         return getFacade().findAll();

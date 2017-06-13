@@ -6,23 +6,8 @@
 
  
 import controladores.ComidaController;
-import java.io.Serializable;
-import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import org.primefaces.event.SelectEvent;
-import org.primefaces.event.UnselectEvent;
-import java.io.Serializable;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
-import javax.faces.bean.RequestScoped;
+import controladores.MenusController;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
  
 import java.io.Serializable;
 import java.util.List;
@@ -30,11 +15,11 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 import entidades.Comida;
+import entidades.Menus;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -56,6 +41,27 @@ public class OrderController implements Serializable {
     
     @ManagedProperty(value="#{comidaController}")
     private ComidaController comidaController ;
+    
+    @ManagedProperty(value="#{menusController}")
+    private MenusController menusController ;
+    
+    private List<Menus> menu;
+
+    public List<Menus> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(List<Menus> menu) {
+        this.menu = menu;
+    }
+
+    public MenusController getMenusController() {
+        return menusController;
+    }
+
+    public void setMenusController(MenusController menusController) {
+        this.menusController = menusController;
+    }
 
     public ComidaController getComidaController() {
         return comidaController;
@@ -100,8 +106,8 @@ public class OrderController implements Serializable {
          c.setTime(getCalendarioController().getDate4());
          hora_orden = getCalendarioController().getDate4();
          dia_int = c.get(Calendar.DAY_OF_WEEK);
-         System.out.println(""+c.getTime());
-         System.out.println("Dia:"+dia_int);
+         //System.out.println(""+c.getTime());
+         //System.out.println("Dia:"+dia_int);
          switch(dia_int){
              case 0: diaSemana = "S";
                      break;
@@ -119,6 +125,9 @@ public class OrderController implements Serializable {
                      break;
 
          }
+         
+        this.menu = menusController.getMenuByDay(diaSemana);
+         this.comidas = menu.get(0).getComidaList();
         return diaSemana;
     }
 
@@ -271,7 +280,11 @@ public class OrderController implements Serializable {
     
     @PostConstruct
     public void init() {
-       this.comidas = comidaController.getItems();
+       
+        System.out.println(getDiaSemana());
+       this.menu = menusController.getMenuByDay(getDiaSemana());
+       this.comidas = menu.get(0).getComidaList();
+       //this.comidas = comidaController.getItems();
        if(comidasEnOrden == null){
         comidasEnOrden = new ArrayList();
        }

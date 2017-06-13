@@ -28,10 +28,13 @@ public class MenusFacade extends AbstractFacade<Menus> implements MenusFacadeLoc
         return em;
     }
     
-    public List<Menus> getMenuByDay()
+    @Override
+    public List<Menus> getMenuByDay(String date)
     {
+        System.out.println("MenuFacade");
         TypedQuery<Menus> query =
-        em.createNamedQuery("Menus.findByEspecialDelDia", Menus.class);
+        em.createNamedQuery("Menus.findByEspecialDelDia", Menus.class).setParameter("especialDelDia",date);
+        
         return query.getResultList();
     }
 

@@ -15,6 +15,7 @@ controladores\util\util\JsfUtil$PersistAction.class
 controladores\util\JsfUtil$PersistAction.class
 managedsbeans\util\JsfUtil$PersistAction.class
 CalendarioController.class
+VarHandler.class
 controladores\util\JsfUtil.class
 managedsbeans\util\JsfUtil.class
 controladores\JsfUtil.class

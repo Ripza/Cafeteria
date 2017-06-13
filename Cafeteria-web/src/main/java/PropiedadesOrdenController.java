@@ -25,6 +25,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManagerFactory;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validation;
@@ -37,7 +38,7 @@ import org.eclipse.persistence.jpa.jpql.Assert;
  * @author Lene
  */
 @ManagedBean(name = "propiedadesOrdenController", eager = true)
-@RequestScoped
+@SessionScoped
 public class PropiedadesOrdenController implements Serializable {
 
     /**
@@ -55,6 +56,27 @@ public class PropiedadesOrdenController implements Serializable {
     private String correo;
     private Date horaOrden;
     private String horaSeleccion;
+    private Ordermeal nueva_orden;
+    private VarHandler varHandler;
+
+    public VarHandler getVarHandler() {
+        return varHandler;
+    }
+
+    public void setVarHandler(VarHandler varHandler) {
+        this.varHandler = varHandler;
+    }
+
+    public Ordermeal getNueva_orden() {
+        return nueva_orden;
+    }
+
+    public void setNueva_orden(Ordermeal nueva_orden) {
+        this.nueva_orden = nueva_orden;
+    }
+            
+            
+            
 
     public String getHoraSeleccion() {
         return horaSeleccion;
@@ -84,6 +106,7 @@ public class PropiedadesOrdenController implements Serializable {
     
     @ManagedProperty(value="#{orderctrl}")
     private OrderController orderController ;
+    
     private List<Comida> comidaSeleccionada;
 
     public List<Comida> getComidaSeleccionada() {
@@ -236,6 +259,10 @@ public class PropiedadesOrdenController implements Serializable {
         nuevaOrden.setMetodoPago(getMetodopago());
         nuevaOrden.setComidaList(getComidaSeleccionada());
         nuevaOrden.setHorarioOcupado(getHoraOrden());
+        nueva_orden = nuevaOrden;
+       
+        varHandler = new VarHandler();
+        varHandler.setNueva_orden(nueva_orden);
         
         try{
             ordermealController.setSelected(nuevaOrden);
@@ -255,6 +282,8 @@ public class PropiedadesOrdenController implements Serializable {
                 Assert.fail("ejb exception");
             
         }      
+        
+        
 
         
         bTodoBueno = true;
