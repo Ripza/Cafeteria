@@ -1,3 +1,5 @@
+package controladores;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,6 +7,7 @@
  */
 
  
+import controladores.CalendarioController;
 import controladores.ComidaController;
 import controladores.MenusController;
 import javax.faces.bean.SessionScoped;

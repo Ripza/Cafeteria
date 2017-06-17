@@ -1,9 +1,12 @@
+package controladores;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import controladores.OrderController;
 import controladores.ComidaController;
 import controladores.OrdermealController;
 import entidades.Comida;
@@ -57,15 +60,6 @@ public class PropiedadesOrdenController implements Serializable {
     private Date horaOrden;
     private String horaSeleccion;
     private Ordermeal nueva_orden;
-    private VarHandler varHandler;
-
-    public VarHandler getVarHandler() {
-        return varHandler;
-    }
-
-    public void setVarHandler(VarHandler varHandler) {
-        this.varHandler = varHandler;
-    }
 
     public Ordermeal getNueva_orden() {
         return nueva_orden;
@@ -261,8 +255,6 @@ public class PropiedadesOrdenController implements Serializable {
         nuevaOrden.setHorarioOcupado(getHoraOrden());
         nueva_orden = nuevaOrden;
        
-        varHandler = new VarHandler();
-        varHandler.setNueva_orden(nueva_orden);
         
         try{
             ordermealController.setSelected(nuevaOrden);

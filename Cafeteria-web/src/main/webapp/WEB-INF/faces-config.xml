@@ -6,14 +6,14 @@
 
     <managed-bean>
         <managed-bean-name>CalendarioControllerBean</managed-bean-name>
-        <managed-bean-class>CalendarioController</managed-bean-class>
-        <managed-bean-scope></managed-bean-scope>
-    </managed-bean>
+        <managed-bean-class>controladores.CalendarioController</managed-bean-class>
+    
+        <managed-bean-scope></managed-bean-scope></managed-bean>
     <managed-bean>
         <managed-bean-name>OrderControllerBean</managed-bean-name>
-        <managed-bean-class>OrderController</managed-bean-class>
-        <managed-bean-scope></managed-bean-scope>
-    </managed-bean>
+        <managed-bean-class>controladores.OrderController</managed-bean-class>
+    
+        <managed-bean-scope></managed-bean-scope></managed-bean>
     
     
     <application>
