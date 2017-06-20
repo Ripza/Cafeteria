@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="5.6.1" timestamp="2017-06-20T08:27:43.669">
+<file name="D:\Projects_kraken\Cafeteria\Cafeteria-ejb\src\main\java\entidades\Comida.java">
+<violation beginline="148" endline="148" begincolumn="14" endcolumn="60" rule="UselessParentheses" ruleset="Unnecessary" package="entidades" class="Comida" method="equals" externalInfoUrl="https://pmd.github.io/pmd-5.6.1/pmd-java/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="148" endline="148" begincolumn="67" endcolumn="128" rule="UselessParentheses" ruleset="Unnecessary" package="entidades" class="Comida" method="equals" externalInfoUrl="https://pmd.github.io/pmd-5.6.1/pmd-java/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+<file name="D:\Projects_kraken\Cafeteria\Cafeteria-ejb\src\main\java\entidades\Horarioocupado.java">
+<violation beginline="104" endline="104" begincolumn="14" endcolumn="76" rule="UselessParentheses" ruleset="Unnecessary" package="entidades" class="Horarioocupado" method="equals" externalInfoUrl="https://pmd.github.io/pmd-5.6.1/pmd-java/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="104" endline="104" begincolumn="83" endcolumn="168" rule="UselessParentheses" ruleset="Unnecessary" package="entidades" class="Horarioocupado" method="equals" externalInfoUrl="https://pmd.github.io/pmd-5.6.1/pmd-java/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+<file name="D:\Projects_kraken\Cafeteria\Cafeteria-ejb\src\main\java\entidades\Menus.java">
+<violation beginline="103" endline="103" begincolumn="14" endcolumn="58" rule="UselessParentheses" ruleset="Unnecessary" package="entidades" class="Menus" method="equals" externalInfoUrl="https://pmd.github.io/pmd-5.6.1/pmd-java/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="103" endline="103" begincolumn="65" endcolumn="123" rule="UselessParentheses" ruleset="Unnecessary" package="entidades" class="Menus" method="equals" externalInfoUrl="https://pmd.github.io/pmd-5.6.1/pmd-java/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+<file name="D:\Projects_kraken\Cafeteria\Cafeteria-ejb\src\main\java\entidades\Ordermeal.java">
+<violation beginline="244" endline="244" begincolumn="14" endcolumn="66" rule="UselessParentheses" ruleset="Unnecessary" package="entidades" class="Ordermeal" method="equals" externalInfoUrl="https://pmd.github.io/pmd-5.6.1/pmd-java/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="244" endline="244" begincolumn="73" endcolumn="143" rule="UselessParentheses" ruleset="Unnecessary" package="entidades" class="Ordermeal" method="equals" externalInfoUrl="https://pmd.github.io/pmd-5.6.1/pmd-java/rules/java/unnecessary.html#UselessParentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+<file name="D:\Projects_kraken\Cafeteria\Cafeteria-ejb\src\main\java\sessionbeans\MenusFacade.java">
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="24" rule="UnusedImports" ruleset="Import Statements" package="sessionbeans" class="MenusFacade" externalInfoUrl="https://pmd.github.io/pmd-5.6.1/pmd-java/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'entidades.Comida'
+</violation>
+</file>
+<file name="D:\Projects_kraken\Cafeteria\Cafeteria-ejb\src\main\java\sessionbeans\MenusFacadeLocal.java">
+<violation beginline="31" endline="31" begincolumn="12" endcolumn="49" rule="UnnecessaryModifier" ruleset="Unnecessary" package="sessionbeans" class="MenusFacadeLocal" method="getMenuByDay" externalInfoUrl="https://pmd.github.io/pmd-5.6.1/pmd-java/rules/java/unnecessary.html#UnnecessaryModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+</pmd>

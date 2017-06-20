@@ -17,7 +17,10 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <pmd.skip>true</pmd.skip>
+        <pmd.failOnViolation>false</pmd.failOnViolation>
+        <pmd.verbose>true</pmd.verbose>
+        <pmd.printFailingErrors>true</pmd.printFailingErrors>
+        <aggregate>true</aggregate>
     </properties>
 
     <dependencies>
